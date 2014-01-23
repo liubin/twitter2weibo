@@ -1,0 +1,1 @@
+twitter2weibo: bundle exec ruby twitter2weibo.rb
