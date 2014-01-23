@@ -80,7 +80,7 @@ EventMachine::run {
     begin
         if post_media_url.nil?
           weibo.statuses.update(text)
-        elsif post_media_url.end_with?('png') or post_media_url.end_with?('jpg') or post_media_url.end_with?('jpe')
+        elsif post_media_url.end_with?('png') or post_media_url.end_with?('jpg') or post_media_url.end_with?('jpeg')
           $stdout.print "media_url: #{post_media_url}\n"
           weibo.statuses.upload(text, open(post_media_url), {})
         end
