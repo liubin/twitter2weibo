@@ -62,10 +62,13 @@ EventMachine::run {
     # replace t.co url with original url, because sina band
     text = text.gsub(/http\:\/\/t\.co\/[a-z0-9A-Z]+/){|u| unshortten u }
     text = text.gsub(/https\:\/\/t\.co\/[a-z0-9A-Z]+/){|u| unshortten u }
-    # TODO: rehash #\w -> #\w#
-    # TODO: RT @xxx -> RT xxx@twitter
 
-    # TODO: reply?
+    # @user_name to user_name﹫twitter.
+    # pay attention on the difference between '@' and '﹫'
+    text = text.gsub(/\B@([A-Za-z0-9_]{1,15})/,'\1﹫twitter')
+    # rehash #\w -> #\w#
+    # TODO: can match english words only.
+    text = text.gsub(/\B#([A-Za-z0-9_]{1,15})/,'#\1#')
 
     $stdout.print "after parse text: #{text}\n"
     $stdout.flush
