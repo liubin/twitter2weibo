@@ -3,6 +3,14 @@ twitter2weibo
 
 monitor (one's or ones's ) Twitter using Twitter Streaming API and repost to sina weibo. 
 
+Run locally
+====
+
+if your want to run it locally, you can simply run :
+```
+$ foreman start
+```
+
 Deploy to heroku
 ====
 
