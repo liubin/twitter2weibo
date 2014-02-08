@@ -21,6 +21,7 @@ FOLLOWS                    ||= ENV['FOLLOWS']
 WEIBO_APP_KEY              ||= ENV['WEIBO_APP_KEY']
 WEIBO_APP_SECRET           ||= ENV['WEIBO_APP_SECRET']
 WEIBO_ACCESS_TOKEN         ||= ENV['WEIBO_ACCESS_TOKEN']
+NO_RT_2_WEIBO              ||= ENV['NO_RT_2_WEIBO']
 
 def unshortten(url)
   Unshorten[url]
@@ -59,6 +60,14 @@ EventMachine::run {
     end
     text = tw_json['text']
     $stdout.print "text: #{text}\n"
+
+    rt = tw_json['retweeted_status']
+    if NO_RT_2_WEIBO and not rt.nil?
+      $stdout.print "Not repost to weibo: #{rt}\n"
+      $stdout.flush
+      next
+    end
+
     # replace t.co url with original url, because sina band
     text = text.gsub(/http\:\/\/t\.co\/[a-z0-9A-Z]+/){|u| unshortten u }
     text = text.gsub(/https\:\/\/t\.co\/[a-z0-9A-Z]+/){|u| unshortten u }

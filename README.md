@@ -61,6 +61,10 @@ heroku config:set TWITTER_CONSUMER_SECRET=''
 heroku config:set TWITTER_OAUTH_TOKEN=''
 heroku config:set TWITTER_OAUTH_TOKEN_SECRET=''
 heroku config:set FOLLOWS=''
+
+# not sync to weibo when retweet.
+heroku config:set NO_RT_2_WEIBO=true
+
 ```
 **attention:**  
 1. FOLLOWS can only use numbers.
