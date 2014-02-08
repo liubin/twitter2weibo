@@ -68,7 +68,7 @@ EventMachine::run {
     text = text.gsub(/\B@([A-Za-z0-9_]{1,15})/,'\1﹫twitter')
     # rehash #\w -> #\w#
     # TODO: can match english words only.
-    text = text.gsub(/\B#([A-Za-z0-9_]{1,15})/,'#\1#')
+    text = text.gsub(/\B#([\u2E80-\u9FFFA-Za-z0-9_]{1,15})/,'#\1#')
 
     $stdout.print "after parse text: #{text}\n"
     $stdout.flush
